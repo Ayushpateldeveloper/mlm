@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Create an axios instance with base configuration
 const axiosInstance = axios.create({
-    baseURL: 'http://localhost:5000/api',
+    baseURL: `${process.env.REACT_APP_BACKEND_URL}/api`,
     timeout: 10000,  // 10 seconds timeout
     headers: {
         'Content-Type': 'application/json'
