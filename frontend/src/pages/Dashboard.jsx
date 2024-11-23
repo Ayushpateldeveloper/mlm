@@ -9,6 +9,8 @@ import ConfettiModal from '../components/ConfettiModal';
 // Wallet Statistics Component
 const WalletStatistics = ({ userData, onAddFunds, onWithdrawFunds }) => {
     return (
+
+        
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <StatCard 
                 title="Fund Wallet" 
@@ -33,7 +35,7 @@ const WalletStatistics = ({ userData, onAddFunds, onWithdrawFunds }) => {
                 value={`₹${userData?.cashbackWallet?.toLocaleString() || '0'}`} 
                 icon={
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7 text-purple-500">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0-9.75V6a.75.75 0 00.75.75h.75m-1.5 1.5h-.375A1.125 1.125 0 005.25 6V4.875c0-.621.504-1.125 1.125-1.125H20.25M12 7.5v8.25h8.25" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h-.375A1.125 1.125 0 005.25 6V4.875c0-.621.504-1.125 1.125-1.125H20.25M12 7.5v8.25h8.25" />
                     </svg>
                 }
             />
@@ -102,33 +104,33 @@ const StatCard = ({ title, value, icon }) => {
 const TransactionHistory = ({ transactions }) => {
     // Comprehensive debug logging for transactions
     useEffect(() => {
-        console.group('Transaction History Debug');
-        console.log('Raw Transactions Input:', transactions);
+        // console.group('Transaction History Debug');
+        // console.log('Raw Transactions Input:', transactions);
         
-        // Check different possible transaction sources
-        console.log('Transactions Sources:', {
-            directTransactions: transactions,
-            transactionsLength: transactions?.length,
-            firstTransaction: transactions?.[0],
-            transactionKeys: transactions ? Object.keys(transactions) : 'N/A'
-        });
+        // // Check different possible transaction sources
+        // console.log('Transactions Sources:', {
+        //     directTransactions: transactions,
+        //     transactionsLength: transactions?.length,
+        //     firstTransaction: transactions?.[0],
+        //     transactionKeys: transactions ? Object.keys(transactions) : 'N/A'
+        // });
 
         // Detailed type and structure checking
         if (transactions) {
             try {
-                console.log('Transaction Type:', typeof transactions);
-                console.log('Is Array:', Array.isArray(transactions));
-                console.log('Has Length:', transactions.length);
+                // console.log('Transaction Type:', typeof transactions);
+                // console.log('Is Array:', Array.isArray(transactions));
+                // console.log('Has Length:', transactions.length);
                 
                 // Attempt to log first transaction details
                 if (transactions.length > 0) {
                     const firstTx = transactions[0];
-                    console.log('First Transaction Details:', {
-                        id: firstTx.id,
-                        type: firstTx.type,
-                        amount: firstTx.amount,
-                        date: firstTx.date
-                    });
+                    // console.log('First Transaction Details:', {
+                    //     id: firstTx.id,
+                    //     type: firstTx.type,
+                    //     amount: firstTx.amount,
+                    //     date: firstTx.date
+                    // });
                 }
             } catch (error) {
                 console.error('Error processing transactions:', error);
@@ -153,11 +155,11 @@ const TransactionHistory = ({ transactions }) => {
             ? transactions 
             : (transactions.data?.transactions || transactions.transactions || []);
 
-        console.log('Processed Transactions Preparation:', {
-            inputType: typeof transactions,
-            isArray: Array.isArray(transactions),
-            txnArrayLength: txnArray.length
-        });
+        // console.log('Processed Transactions Preparation:', {
+        //     inputType: typeof transactions,
+        //     isArray: Array.isArray(transactions),
+        //     txnArrayLength: txnArray.length
+        // });
 
         return txnArray.map(transaction => {
             // Create a date in Indian time zone
@@ -199,7 +201,7 @@ const TransactionHistory = ({ transactions }) => {
             return {};
         }
 
-        console.log('Grouping Processed Transactions:', processedTransactions);
+        // console.log('Grouping Processed Transactions:', processedTransactions);
 
         const groups = {};
         processedTransactions.forEach(transaction => {
@@ -233,7 +235,7 @@ const TransactionHistory = ({ transactions }) => {
             });
         });
 
-        console.log('Grouped Transactions Result:', groups);
+        // console.log('Grouped Transactions Result:', groups);
         return groups;
     }, [processedTransactions]);
 
@@ -276,12 +278,12 @@ const TransactionHistory = ({ transactions }) => {
                         <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3">{date}</h3>
                         {dayTransactions.map((transaction, index) => {
                             // Debug logging for each transaction
-                            console.log('Rendering transaction:', {
-                                id: transaction._id || transaction.id,
-                                type: transaction.type,
-                                amount: transaction.amount,
-                                date: transaction.formattedDate
-                            });
+                            // console.log('Rendering transaction:', {
+                            //     id: transaction._id || transaction.id,
+                            //     type: transaction.type,
+                            //     amount: transaction.amount,
+                            //     date: transaction.formattedDate
+                            // });
 
                             return (
                                 <motion.div 
@@ -330,6 +332,45 @@ const TransactionHistory = ({ transactions }) => {
     );
 };
 
+// Function to process and group transactions by date
+const processTransactions = (transactions) => {
+    if (!Array.isArray(transactions)) return {};
+    
+    if (!transactions || transactions.length === 0) {
+        return {};
+    }
+
+    const groupedTransactions = transactions.reduce((acc, transaction) => {
+        const transactionDate = new Date(transaction.date);
+        const formattedDate = transactionDate.toLocaleDateString('en-US', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+        });
+
+        if (!acc[formattedDate]) {
+            acc[formattedDate] = [];
+        }
+
+        acc[formattedDate].push(transaction);
+
+        return acc;
+    }, {});
+
+    return groupedTransactions;
+};
+
+// Add a utility function to calculate total funds
+const calculateTotalFunds = (transactions) => {
+    if (!Array.isArray(transactions)) return 0;
+
+    const totalFunds = transactions
+        .filter(transaction => transaction.type === 'DEPOSIT')
+        .reduce((total, transaction) => total + transaction.amount, 0);
+
+    return totalFunds;
+};
+
 // Add Funds Modal
 const AddFundsModal = ({ 
     isOpen, 
@@ -343,35 +384,29 @@ const AddFundsModal = ({
     const [notes, setNotes] = useState('');
 
     const handleAddFunds = async () => {
-        // Validate amount
         const numAmount = parseFloat(amount);
         
-        // Basic validation
         if (isNaN(numAmount) || numAmount <= 0) {
             setError('Please enter a valid amount');
             return;
         }
 
         try {
-            // Ensure Razorpay key is available
             const razorpayKey = process.env.REACT_APP_RAZORPAY_KEY_ID;
             if (!razorpayKey) {
                 throw new Error('Razorpay Key ID is not defined');
             }
 
-            // Razorpay payment integration
             const options = {
                 key: razorpayKey,
-                amount: numAmount * 100, // Amount in paise
+                amount: numAmount * 100, 
                 currency: 'INR',
                 name: 'UtilityPro MLM',
                 description: 'Fund Wallet Deposit',
                 handler: async (response) => {
                     try {
-                        // Call onAddFunds with amount, Razorpay response, and optional notes
                         await onAddFunds(numAmount, response, notes);
 
-                        // Optimistically update user data
                         if (updateUserData) {
                             updateUserData(prevUserData => ({
                                 ...prevUserData,
@@ -380,7 +415,6 @@ const AddFundsModal = ({
                             }));
                         }
 
-                        // Close modal
                         onClose();
                     } catch (err) {
                         console.error('Failed to add funds', err);
@@ -401,7 +435,6 @@ const AddFundsModal = ({
                 }
             };
 
-            // Open Razorpay payment window
             const rzp = new window.Razorpay(options);
             rzp.open();
         } catch (err) {
@@ -497,10 +530,8 @@ const WithdrawFundsModal = ({ isOpen, onClose, onWithdraw, userData }) => {
     const [withdrawalMethod, setWithdrawalMethod] = useState('bank');
 
     const handleWithdraw = async () => {
-        // Validate amount
         const numAmount = parseFloat(amount);
         
-        // Basic validation
         if (isNaN(numAmount) || numAmount <= 0) {
             setError('Please enter a valid amount');
             return;
@@ -591,11 +622,11 @@ const WithdrawFundsModal = ({ isOpen, onClose, onWithdraw, userData }) => {
 };
 
 const Dashboard = () => {
-    const { user, isAuthenticated, isLoading, logout, setUser } = useAuth();
+    const { isAuthenticated, logout, userData: authUserData } = useAuth();
     const [userData, setUserData] = useState(null);
-    const [transactions, setTransactions] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [processedTransactions, setProcessedTransactions] = useState({});
     const [isAddFundsModalOpen, setIsAddFundsModalOpen] = useState(false);
     const [isWithdrawFundsModalOpen, setIsWithdrawFundsModalOpen] = useState(false);
     const [isConfettiModalOpen, setIsConfettiModalOpen] = useState(false);
@@ -604,59 +635,40 @@ const Dashboard = () => {
         subMessage: 'Your transaction was successful'
     });
 
-    // Fetch user data including transactions
     const fetchUserData = async () => {
         try {
-            setLoading(true);
+            setIsLoading(true);
+
+            const transactionResponse = await axios.get('/transactions/history');
             
-            // Fetch user profile and transactions
-            const [profileResponse, transactionsResponse] = await Promise.all([
-                axios.get('/auth/profile'),
-                axios.get('/transactions/history')
-            ]);
+            const directTransactions = transactionResponse.data.transactions || [];
+            const walletBalance = transactionResponse.data.walletBalance || 0;
+            const totalDeposits = transactionResponse.data.totalDeposits || 0;
 
-            console.log('User Profile Response:', {
-                data: profileResponse.data,
-                status: profileResponse.status
-            });
+            const processedTransactions = processTransactions(directTransactions);
 
-            console.log('Transactions Response:', {
-                data: transactionsResponse.data,
-                status: transactionsResponse.status
-            });
+            setUserData(prevData => ({
+                ...prevData,
+                transactions: directTransactions,
+                walletBalance: walletBalance,
+                totalDeposits: totalDeposits,
+                fundWallet: 0,
+                incomeWallet: 0,
+                cashbackWallet: 0
+            }));
 
-            // Update user data with both profile and transaction information
-            setUserData({
-                ...profileResponse.data,
-                transactions: transactionsResponse.data.transactions || [],
-                walletBalance: transactionsResponse.data.walletBalance || 0,
-                totalDeposits: transactionsResponse.data.totalDeposits || 0
-            });
-
-            // Log final user data for debugging
-            console.log('Final User Data:', {
-                transactions: transactionsResponse.data.transactions?.length,
-                walletBalance: transactionsResponse.data.walletBalance,
-                totalDeposits: transactionsResponse.data.totalDeposits
-            });
+            setProcessedTransactions(processedTransactions);
 
         } catch (error) {
-            console.error('Dashboard data fetch error:', {
-                message: error.message,
-                response: error.response,
-                config: error.config
-            });
-
-            // Handle specific error scenarios
-            if (error.response?.status === 401) {
-                // Token might be expired, logout user
+            console.error('Dashboard data fetch error:', error);
+            
+            if (error.response && error.response.status === 401) {
                 logout();
             } else {
-                // Set error state to display to user
-                setError('Failed to load dashboard data. Please try again.');
+                setError('Failed to fetch dashboard data. Please try again.');
             }
         } finally {
-            setLoading(false);
+            setIsLoading(false);
         }
     };
 
@@ -664,32 +676,23 @@ const Dashboard = () => {
         fetchUserData();
     }, []);
 
-    // If still checking authentication, show loading
     if (isLoading) {
         return (
-            <div className="loading-container">
-                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
-                <p>Restoring session...</p>
+            <div className="min-h-screen flex items-center justify-center">
+                <div className="flex flex-col items-center justify-center">
+                    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mb-4"></div>
+                    <p className="text-gray-600">Restoring session...</p>
+                </div>
             </div>
         );
     }
 
-    // Redirect to login if not authenticated
     if (!isAuthenticated) {
         return <Navigate to="/login" />;
     }
 
-    if (loading) {
-        return (
-            <div className="min-h-screen flex items-center justify-center">
-                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
-            </div>
-        );
-    }
-
     const handleAddFunds = async (amount, response, notes) => {
         try {
-            // Validate amount
             const numAmount = parseFloat(amount);
             if (isNaN(numAmount) || numAmount <= 0) {
                 throw new Error('Invalid amount. Please enter a positive number.');
@@ -701,25 +704,22 @@ const Dashboard = () => {
                 razorpay_signature: razorpaySignature 
             } = response;
 
-            // Send transaction to backend
             const { data } = await axios.post(`${axios.defaults.baseURL}/transactions/add`, {
                 amount: numAmount,
                 razorpayPaymentId: razorpayPaymentId,
                 orderId: razorpayOrderId,
                 signature: razorpaySignature,
-                walletType: 'fund', // Specify wallet type
+                walletType: 'fund', 
                 description: 'Fund Wallet Deposit via Razorpay',
                 notes
             });
 
-            // Update user data after successful transaction
             setUserData(prevData => ({
                 ...prevData,
                 fundWalletBalance: data.updatedBalance,
                 transactions: [data.transaction, ...(prevData.transactions || [])]
             }));
 
-            // Trigger confetti modal
             setConfettiMessage({
                 message: 'Funds Added Successfully!',
                 subMessage: `You added ${new Intl.NumberFormat('en-IN', {
@@ -731,20 +731,17 @@ const Dashboard = () => {
 
         } catch (error) {
             console.error('Error adding funds:', error);
-            // Handle error (show error message, etc.)
             setError(error.response?.data?.message || 'Failed to add funds');
         }
     };
 
     const handleWithdraw = async (amount, withdrawalMethod) => {
         try {
-            // Validate amount
             const numAmount = parseFloat(amount);
             if (isNaN(numAmount) || numAmount <= 0) {
                 throw new Error('Invalid amount. Please enter a positive number.');
             }
 
-            // Ensure sufficient wallet balance
             if (numAmount > (userData?.incomeWalletBalance || 0)) {
                 throw new Error('Insufficient income wallet balance');
             }
@@ -754,7 +751,6 @@ const Dashboard = () => {
                 withdrawalMethod
             });
 
-            // Update user data after successful transaction
             setUserData(prevData => ({
                 ...prevData,
                 incomeWalletBalance: response.data.updatedBalance,
@@ -768,7 +764,6 @@ const Dashboard = () => {
                 ]
             }));
 
-            // Optional: Show success notification
             alert(`Successfully withdrew ₹${numAmount} from your wallet`);
             setIsWithdrawFundsModalOpen(false);
 
@@ -780,7 +775,6 @@ const Dashboard = () => {
                 config: error.config
             });
 
-            // Detailed error handling
             if (error.response) {
                 const errorMessage = error.response.data?.message || 
                                      error.response.data?.error || 
@@ -808,7 +802,7 @@ const Dashboard = () => {
                 alert(error.message || 'An unexpected error occurred. Please try again.');
             }
 
-            throw error;  // Re-throw to allow caller to handle if needed
+            throw error;  
         }
     };
 
@@ -819,14 +813,13 @@ const Dashboard = () => {
                 animate={{ opacity: 1, y: 0 }}
                 className="container mx-auto space-y-6"
             >
-                {/* Page Header */}
                 <div className="mb-8 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
                     <div className="text-center sm:text-left w-full sm:w-auto mb-4 sm:mb-0">
                         <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">
                             Dashboard
                         </h1>
                         <p className="text-lg sm:text-base text-gray-600 dark:text-gray-300">
-                            Welcome back, {userData?.username || 'User'}!
+                            Welcome, {authUserData?.username || authUserData?.name || 'User'}!
                         </p>
                     </div>
                     <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 w-full sm:w-auto px-4 sm:px-0">
@@ -851,24 +844,20 @@ const Dashboard = () => {
                     </div>
                 </div>
 
-                {/* Wallet Statistics */}
                 <WalletStatistics 
                     userData={userData} 
+                
                     onAddFunds={() => setIsAddFundsModalOpen(true)} 
                     onWithdrawFunds={() => setIsWithdrawFundsModalOpen(true)} 
                 />
 
-                {/* Network Statistics */}
                 <NetworkStatistics userData={userData} />
 
-                {/* Transactions and Performance */}
                 <div className="grid md:grid-cols-2 gap-6">
-                    {/* Transaction History */}
                     <TransactionHistory 
                         transactions={userData?.transactions} 
                     />
 
-                    {/* Performance Metrics */}
                     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
                         <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">
                             Performance
@@ -894,6 +883,14 @@ const Dashboard = () => {
                                 title="Weekly Growth" 
                                 value={`${userData?.weeklyGrowth || 0}%`} 
                                 icon="📊"
+                            />
+                            <StatCard 
+                                title="Total Funds" 
+                                value={new Intl.NumberFormat('en-IN', {
+                                    style: 'currency',
+                                    currency: 'INR'
+                                }).format(calculateTotalFunds(userData?.transactions) || 0)} 
+                                icon="💸"
                             />
                         </div>
                     </div>
